@@ -6,22 +6,38 @@
     },
   "inbound": {
     "port": 443,
-    "protocol": "vmess",
+    "protocol": "vless",
     "settings": {
       "clients": [
         {
-          "id": "UUID",
-          "alterId": 64
+          "id":"UUID",
+          "level": 0,
+          "email": "wulabing@gmail.com"
+        }
+      ],
+      "decryption": "none",
+      "fallbacks": [
+        {
+        "dest": 65534
+        }
+      ],
+      "fallbacks_h2": [
+        {
+        "dest": 65535
         }
       ]
     },
     "streamSettings": {
-      "network": "h2", 
-      "httpSettings": { 
+      "network": "h2",
+      "httpSettings": {
         "path": "/ray/"
       },
-      "security": "tls", 
+      "security": "tls",
       "tlsSettings": {
+        "alpn": [
+            "h2",
+            "http/1.1"
+        ],
         "certificates": [
           {
             "certificateFile": "/data/v2ray.crt",
